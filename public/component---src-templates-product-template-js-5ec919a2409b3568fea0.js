@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[509],{5357:function(t,e,a){"use strict";a.r(e);var l=a(7294),r=a(2445),u=a(5444),n=a(6911),c=a(3751);e.default=function(t){var e=t.data.single_product.data;return l.createElement(r.Z,null,l.createElement(c.Z,{title:e.title_product.text}),l.createElement(n.Z,{fluid:e.image_product.localFile.sharp.fluid,alt:"test"},"TEst"),l.createElement(u.Link,{to:"/"},"Go to Home"))}}}]);
+//# sourceMappingURL=component---src-templates-product-template-js-5ec919a2409b3568fea0.js.map

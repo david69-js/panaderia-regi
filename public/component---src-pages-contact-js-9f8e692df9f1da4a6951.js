@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[501],{262:function(t,e,a){"use strict";a.r(e);var n=a(7294),c=a(2445),r=a(3751);e.default=function(){return n.createElement(c.Z,{path:"/contact"},n.createElement(r.Z,{title:"Contact"}),n.createElement("h2",null,"Contact"))}}}]);
+//# sourceMappingURL=component---src-pages-contact-js-9f8e692df9f1da4a6951.js.map

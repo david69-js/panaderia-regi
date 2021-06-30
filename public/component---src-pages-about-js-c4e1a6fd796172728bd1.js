@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[682],{5518:function(t,e,a){"use strict";a.r(e);var u=a(7294),r=a(2445),l=a(3751);e.default=function(){return u.createElement(r.Z,{path:"/about"},u.createElement(l.Z,{title:"About"}),u.createElement("h2",null,"About"))}}}]);
+//# sourceMappingURL=component---src-pages-about-js-c4e1a6fd796172728bd1.js.map
