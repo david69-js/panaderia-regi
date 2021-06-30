@@ -1,0 +1,51 @@
+{
+    "Main": {
+        "steps": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "image_step": {
+                        "type": "Image",
+                        "config": {
+                            "constraint": {
+                                "width": null,
+                                "height": null
+                            },
+                            "thumbnails": [],
+                            "label": "Image Step"
+                        }
+                    },
+                    "title_step": {
+                        "type": "StructuredText",
+                        "config": {
+                            "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+                            "label": "Title Step",
+                            "placeholder": "Agrega un titulo"
+                        }
+                    },
+                    "text_step": {
+                        "type": "StructuredText",
+                        "config": {
+                            "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                            "allowTargetBlank": true,
+                            "label": "Text Step",
+                            "placeholder": "Agrega una descripción"
+                        }
+                    },
+                    "select_position": {
+                        "type": "Select",
+                        "config": {
+                            "options": [
+                                "Derecha",
+                                "Izquierda"
+                            ],
+                            "label": "Select Position",
+                            "placeholder": "Escoge una posicion"
+                        }
+                    }
+                },
+                "label": "Steps"
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "Main": {
+        "header_navigation": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "navigation_name": {
+                        "type": "StructuredText",
+                        "config": {
+                            "multi": "heading5,heading6,hyperlink,rtl",
+                            "allowTargetBlank": true,
+                            "label": "Navigation Link",
+                            "placeholder": "Nombre del Link"
+                        }
+                    },
+                    "navigation_link": {
+                        "type": "Text",
+                        "config": {
+                            "label": "Navigation Link",
+                            "placeholder": "Link de navegacion interna"
+                        }
+                    }
+                },
+                "label": "Header Navigation"
+            }
+        }
+    }
+}

@@ -1,12 +1,17 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Dev page `,
+    description: `This description of my gallery`,
+    author: `@davidta`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -27,6 +32,31 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        shouldDownloadImage: () => true,
+        schemas: {
+          header: require('./settings/prismic/header.json'),
+          home: require('./settings/prismic/home.json'),
+          products: require('./settings/prismic/products.json'),
+          step: require('./settings/prismic/step.json'),
+        },
+        prismicToolbar: true,
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Alfa Slab One`,
+          `Source Code Pro`
+        ],
+        display: 'swap'
+      }
     },
     `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
