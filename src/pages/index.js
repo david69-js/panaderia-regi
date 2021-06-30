@@ -1,9 +1,10 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import ResponsiveImage from "gatsby-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import RecortText from '../components/functions/recortText'
+
 export const query = graphql`
 query {
   allPrismicProducts {
@@ -60,7 +61,9 @@ const IndexPage = ({ data }) => {
     }
   } = data;
   const prismicProducts = allPrismicProducts.edges.map(({ node }) => node.data)
-
+  const fullContainerImage = {
+    height: '100%'
+  }
   return (
     <Layout path="/">
       <Seo title="Home" />
@@ -72,22 +75,24 @@ const IndexPage = ({ data }) => {
             fluid={home_image.localFile.sharp.fluid}
             fadeIn={true}
           >
-            <div className="home-container__fill">
-              <h1 className="home-container__title">{home_title.text}</h1>
-              <h2 className="home-container__sub-title">{home_sub_title.text}</h2>
+            <div className="home-container__fill flex flex-col text-center justify-center">
+              <h1 className="home-container__title text-6xl md:text-8xl">{home_title.text}</h1>
+              <h2 className="home-container__sub-title text-3xl md:text-5xl">{home_sub_title.text}</h2>
             </div>
           </BackgroundImage>
         }
-        <div className=" container mx-auto">
+        <div className="home-container_gallery container mx-auto px-5 pt-4">
           {
             prismicProducts.map((item, index) => (
-              <div key={index} className="home-container__products">
-                <Link to={'/products/' + item.slug} className="home-container__products-image" >
-                  <BackgroundImage fluid={item.image_product.localFile.sharp.fluid} >
-                    <p>{item.text_product.text}</p>
+              <Link to={'/products/' + item.slug} key={index} className={`home-container__products ${index % 2 === 0 ? 'grid-image_small' : 'grid-image_big'}`} >
+                <div className="h-full">
+                  <BackgroundImage fluid={item.image_product.localFile.sharp.fluid} class="h-full" style={fullContainerImage} >
                   </BackgroundImage>
-                </Link>
-              </div>
+                </div>
+                <div className="home-container__body h-full w-full flex justify-center items-center">
+                  <h3 className={`home-container__title text-5xl ${index % 2 === 0 ? 'md:text-4xl' : 'md:text-6xl'}`}>{RecortText(item.title_product.text, 40)}</h3>
+                </div>
+              </Link>
             ))
           }
         </div>
