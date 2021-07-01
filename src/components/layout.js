@@ -18,10 +18,20 @@ const Layout = ({ path, children }) => {
       edges {
         node {
           data {
+
             header_navigation {
               navigation_link
               navigation_name {
                 text
+              }
+            }
+            logo_header {
+              localFile {
+                  sharp: childImageSharp {
+                  fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid_withWebp_noBase64
+                  }
+                }
               }
             }
           }

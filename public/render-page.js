@@ -3107,6 +3107,14 @@ var plugins = [{
     "schemas": {
       "header": {
         "Main": {
+          "logo_header": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "logo_header"
+            }
+          },
           "header_navigation": {
             "type": "Group",
             "config": {

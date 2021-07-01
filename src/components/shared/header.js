@@ -5,9 +5,11 @@ import SearchIcon from "../icons/search";
 import SaveIcon from "../icons/save";
 import OpenNav from "../icons/openNav";
 import CloseIcon from "../icons/close";
+import ResponsiveImage from "gatsby-image"
 import { OpenNavigation, CloseNavigation } from "../functions/closeAndOpen";
 
 const Header = ({ current = '/', navigation }) => {
+  console.log(navigation);
   return (
     <header className="fixed z-50 w-full">
       <div className="drowdown block md:hidden h-12 flex justify-between">
@@ -17,7 +19,12 @@ const Header = ({ current = '/', navigation }) => {
         <div className="close hidden my-auto ml-4 h-auto" onClick={CloseNavigation}>
           <CloseIcon fill='black' className='CloseNav' />
         </div>
-        <h1 className="dropdown-title mx-3 my-auto">title default= sdasdasd</h1>
+        <div className="dropdown-title mx-3 my-auto w-36">
+          <ResponsiveImage className="dropdown-logo"
+            fluid={navigation.logo_header.localFile.sharp.fluid}
+            loading="lazy"
+            fadeIn={true} />
+        </div>
       </div>
       <div className="header fixed w-full">
         <div className="header-container container mx-auto flex flex-col md:flex-row md:justify-between h-full ">
