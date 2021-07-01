@@ -3306,6 +3306,12 @@ var plugins = [{
                     "label": "Select Position",
                     "placeholder": "Escoge una posicion"
                   }
+                },
+                "color_step": {
+                  "type": "Color",
+                  "config": {
+                    "label": "Color Step"
+                  }
                 }
               },
               "label": "Steps"
