@@ -78,8 +78,8 @@ const IndexPage = ({ data }) => {
             fadeIn={true}
           >
             <div className="home-container__fill flex flex-col text-center justify-center">
-              <h1 className="home-container__title text-6xl md:text-8xl">{home_title.text}</h1>
-              <h2 className="home-container__sub-title text-3xl md:text-5xl">{home_sub_title.text}</h2>
+              <h1 className="home-container__title text-6xl md:text-8xl pb-4 md:pb-10">{home_title.text}</h1>
+              <h2 className="home-container__sub-title text-3xl md:text-5xl ">{home_sub_title.text}</h2>
             </div>
           </BackgroundImage>
         }
