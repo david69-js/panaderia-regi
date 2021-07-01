@@ -1,69 +1,71 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import RecortText from '../components/functions/recortText'
+import { RichText } from "prismic-reactjs"
+import ResponsiveImage from "gatsby-image"
 
 export const query = graphql`
 query {
-  allPrismicProducts {
-    edges {
-      node {
-        data {
-          slug
-          title_product {
-            text
-          }
-          text_product {
-            text
-          }
-          image_product{
-						localFile{
-              sharp: childImageSharp {
+  home: prismicHome {
+    data{
+    home_title {
+      text
+    }
+    home_sub_title {
+      text
+    }
+      home_image {
+        localFile {
+                sharp: childImageSharp {
                 fluid(quality: 100) {
                   ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
           }
-        }
       }
     }
-  }
-home: prismicHome {
-  data{
-   home_title {
-     text
-   }
-   home_sub_title {
-     text
-   }
-     home_image {
-       localFile {
-              sharp: childImageSharp {
-              fluid(quality: 100) {
-                ...GatsbyImageSharpFluid_withWebp_noBase64
+    allSteps: allPrismicStep {
+      edges {
+        node {
+          data {
+            steps {
+              title_step {
+                text
               }
+              text_step {
+                raw
+              }
+              image_step {
+                localFile {
+                  sharp: childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid_withWebp_noBase64
+                    }
+                  }
+                }
+              }
+              select_position
+              color_step
             }
           }
         }
-     }
-   }
+      }
+    }
 }
 `
 
 const IndexPage = ({ data }) => {
   const {
-    allPrismicProducts,
+    allSteps,
     home: {
       data: { home_title, home_sub_title, home_image }
     }
   } = data;
-  const prismicProducts = allPrismicProducts.edges.map(({ node }) => node.data)
-  const fullContainerImage = {
-    height: '100%'
-  }
+  const prismicStep = allSteps.edges.map(({ node }) => node.data)
+
   return (
     <Layout path="/">
       <Seo title="Home" />
@@ -81,21 +83,29 @@ const IndexPage = ({ data }) => {
             </div>
           </BackgroundImage>
         }
-        <div className="home-container_gallery container mx-auto px-5 pt-4">
+        <div className="steps container max-w-full">
           {
-            prismicProducts.map((item, index) => (
-              <Link to={'/products/' + item.slug} key={index} className={`home-container__products ${index % 2 === 0 ? 'grid-image_small' : 'grid-image_big'}`} >
-                <div className="h-full">
-                  <BackgroundImage fluid={item.image_product.localFile.sharp.fluid} class="h-full" style={fullContainerImage} >
-                  </BackgroundImage>
+            prismicStep[0].steps.map((step, index) => (
+              <div className="steps-container" key={index} style={{ background: `${step.color_step}` }}>
+                <div className={`container m-auto block md:grid grid-cols-2 items-center`}>
+                  <div className={`steps-container__content py-10 px-5 ${step.select_position === 'Derecha' ? 'col-start-1 col-end-2' : 'col-start-2 col-end-3'}`}>
+                    <h3 className="steps-container__title text-center">{step.title_step.text}</h3>
+                    <RichText render={step.text_step.raw} />
+                  </div>
+                  <div className={`steps-container__images ${step.select_position === 'Derecha' ? 'col-start-2 col-end-3' : 'col-start-1 col-end-2 row-start-1 row-end-2'}`}>
+                    <ResponsiveImage
+                      className="steps-container__images-sigle_image"
+                      fluid={step.image_step.localFile.sharp.fluid}
+                      loading="lazy"
+                      fadeIn={true}
+                    />
+                  </div>
                 </div>
-                <div className="home-container__body h-full w-full flex justify-center items-center">
-                  <h3 className={`home-container__title text-5xl ${index % 2 === 0 ? 'md:text-4xl' : 'md:text-6xl'}`}>{RecortText(item.title_product.text, 40)}</h3>
-                </div>
-              </Link>
+              </div>
             ))
           }
         </div>
+
       </div>
     </Layout>
   )
