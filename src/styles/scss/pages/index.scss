@@ -40,7 +40,6 @@
     }
     @media (min-width: 768px){
         .home-container_gallery{
-            display: grid;
             gap: 1rem;
             grid-auto-flow: dense;
             grid-auto-rows: 22rem;
