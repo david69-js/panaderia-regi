@@ -9,7 +9,6 @@ import ResponsiveImage from "gatsby-image"
 import { OpenNavigation, CloseNavigation } from "../functions/closeAndOpen";
 
 const Header = ({ current = '/', navigation }) => {
-  console.log(navigation);
   return (
     <header className="fixed z-50 w-full">
       <div className="drowdown block md:hidden h-12 flex justify-between">
