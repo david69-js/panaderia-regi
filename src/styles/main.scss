@@ -1,3 +1,37 @@
 @import "./scss/components/header.scss";
 @import "./scss/pages/index.scss";
 @import "scss/pages/gallery.scss";
+@import "scss/pages/about.scss";
+
+//Global title styles
+.fAlfa-normal{
+    font-weight: normal;
+    font-family:'Source Code Pro',  monospace;
+}
+.fAlfa-medium{
+    font-family:'Source Code Pro',  monospace;
+    font-style: normal;
+    font-weight: 700;
+}
+.fAlfa-bold{
+    font-family:'Source Code Pro',  monospace;
+    font-style: normal;
+    font-weight: bold;
+}
+
+//text body
+.fAlfa-normal{
+    font-weight: normal;
+    font-family:'Source Code Pro',  monospace;
+}
+.fAlfa-medium{
+    font-family:'Source Code Pro',  monospace;
+    font-style: normal;
+    font-weight: 700;
+}
+.fAlfa-bold{
+    font-family:'Source Code Pro',  monospace;
+    font-style: normal;
+    font-weight: bold;
+}
+
