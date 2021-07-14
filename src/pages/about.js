@@ -49,16 +49,18 @@ const About = ({ data }) => {
   return (
     <Layout path="/about">
       <Seo title="About" />
-      <div className="about w-full max-w-full">
+      <div className="about w-full max-w-full pt-10">
         <div className="about-container container mx-auto px-4">
-          <h1 className="about-container__title fAlfa-bold text-center">{about_title.text}</h1>
+          <h1 className="about-container__title fAlfa-bold text-center ">{about_title.text}</h1>
           <h2 className="about-container__sub-title fAlfa-medium text-center">{about_sub_title_content.text}</h2>
           <div className="about-container__text-content"><RichText render={about_text_content.raw} /></div>
-          <ResponsiveImage
-            className="about-container__image"
-            fluid={about_image.localFile.sharp.fluid}
-            loading="lazy"
-            fadeIn={true} />
+          <div className="about-container-image flex justify-center items-center">
+            <ResponsiveImage
+              className="about-container__image-responsive"
+              fluid={about_image.localFile.sharp.fluid}
+              loading="lazy"
+              fadeIn={true} />
+          </div>
           <div className="about-container__text-content"><RichText render={about_sub_text_content.raw} /></div>
         </div>
       </div>
