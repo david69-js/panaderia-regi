@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo"
 import { graphql, Link } from "gatsby";
 import { RichText } from "prismic-reactjs";
-import ResponsiveImage from "gatsby-image"
+import BackgroundImage from "gatsby-background-image"
 
 export const query = graphql`
 query dataAbout {
@@ -49,18 +49,23 @@ const About = ({ data }) => {
   return (
     <Layout path="/about">
       <Seo title="About" />
-      <div className="about w-full max-w-full pt-10">
+      <div className="about w-full max-w-full">
+        <div className="about-container-image flex justify-center items-center mb-16 middle-circle">
+          <BackgroundImage
+            Tag="section"
+            className="home-container__backgroud-image w-full"
+            fluid={about_image.localFile.sharp.fluid}
+            fadeIn={true}
+          >
+            <div className="about-fill h-80">
+              asdasd
+            </div>
+          </BackgroundImage>
+        </div>
         <div className="about-container container mx-auto px-4">
-          <h1 className="about-container__title fAlfa-bold text-center ">{about_title.text}</h1>
-          <h2 className="about-container__sub-title fAlfa-medium text-center">{about_sub_title_content.text}</h2>
+          <h1 className="about-container__title fAlfa-bold text-center leading-loose">{about_title.text}</h1>
+          <h2 className="about-container__sub-title fAlfa-medium text-center leading-loose">{about_sub_title_content.text}</h2>
           <div className="about-container__text-content"><RichText render={about_text_content.raw} /></div>
-          <div className="about-container-image flex justify-center items-center">
-            <ResponsiveImage
-              className="about-container__image-responsive"
-              fluid={about_image.localFile.sharp.fluid}
-              loading="lazy"
-              fadeIn={true} />
-          </div>
           <div className="about-container__text-content"><RichText render={about_sub_text_content.raw} /></div>
         </div>
       </div>

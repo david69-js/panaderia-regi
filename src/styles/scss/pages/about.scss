@@ -10,9 +10,12 @@
             font-size: 18px;
         }
        .about-container-image{
-           height: 600px;
+           height: 400px;
+           @media (min-width: 768px){
+               width: 100%;
+           }
            .about-container__image-responsive{
-               width: auto;
+            width: 100%;
                @media (min-width: 768px){
                    width: 700px;
                    height: 400px; 
